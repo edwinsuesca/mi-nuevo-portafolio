@@ -1,0 +1,11 @@
+@import '../../../modulos/colors';
+@import '../../../modulos/mixin';
+@import '../../../modulos/fonts';
+
+footer{
+    @include flex;
+    width: 100%;
+    background-color: $colorGray2;
+    padding: 20px;
+    color: $color1;
+}

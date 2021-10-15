@@ -1,0 +1,12 @@
+@import '../../../modulos/colors';
+@import '../../../modulos/mixin';
+@import '../../../modulos/fonts';
+@import '../../../modulos/media';
+
+.cajaComponente{
+    min-height: 100vh;
+    .cajaProyectos{
+        @include grid(250px);
+        gap: 20px;
+    }
+}

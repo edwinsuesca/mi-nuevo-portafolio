@@ -1,0 +1,26 @@
+@mixin flex() {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flexAj($a, $j) {
+    display: flex;
+    align-items: $a;
+    justify-content: $j;
+}
+
+@mixin grid($min){
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($min, 1fr));
+}
+
+@mixin animacionPdt($propiedad, $duracion, $tiempo) {
+    transition: $propiedad $duracion;
+    @if($tiempo == 'ease'){
+        transition-timing-function:ease;
+    }
+    @else{
+        transition-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+    }
+}

@@ -1,0 +1,73 @@
+@import '../../../modulos/colors';
+@import '../../../modulos/mixin';
+@import '../../../modulos/fonts';
+
+nav{
+    width: 100%;
+    height: 60px;
+    padding: 0 20px;
+    position: fixed;
+    background-color: $colorGray2;
+    @include flexAj(center, space-between);
+    z-index: 1000;
+    #logo{
+        svg{
+            height: 35px;
+            path{
+                fill: $color1;
+            }
+        }
+    }
+    ul{
+        @include flex;
+        gap: 20px;
+        @include animacionPdt(all, 0.5s, funcion);
+        li{
+            a{
+                font-size: $fontSize1;
+                color: $color1;
+            }
+        }
+
+        li:hover{
+            a{
+                color: $color3;
+            }
+        }
+    }
+}
+
+#burgerBox{
+    height: 60px;
+    width: fit-content;
+    @include flex;
+    #iconBurger{
+        height: 26px;
+        width: 26px;
+        @include flexAj(center, space-between);
+        flex-direction: column;
+        #rectangle1, #rectangle2, #rectangle3{
+            height: 4.2px;
+            width: 100%;
+            border-radius: 50px;
+            background-color: $color1;
+            transition: all 0.3s;
+            @include animacionPdt(all, 800ms, funcion);
+        }
+    }
+}
+
+#burgerBox:hover{
+    cursor: pointer;
+    #iconBurger{
+        height: 26px;
+        width: 26px;
+        @include flexAj(center, space-between);
+        flex-direction: column;
+        #rectangle1, #rectangle2, #rectangle3{
+            background-color: $color3;
+        }
+    }
+}
+
+@import '../../../modulos/media'; //Se importan aquí los estilos para media queries, con el fin de que se reemplacen los valores anteriores. Esto se debe a efectos de lectura en cascada de css.

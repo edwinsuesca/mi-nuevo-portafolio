@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./modulos/colors";
+@import "./modulos/mixin";
+@import "./modulos/fonts";
+@import "./modulos/elementos";
+
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "planet";
+}
+
+*::selection{
+  background-color: $color1;
+  color: $colorGray1;
+}
+
+body {
+  position: relative;
+  background-color: $colorGray1;
+}
+
+li{ list-style: none !important;}
+a{text-decoration: none !important;}
+
+.cajaComponente{
+  padding: 4vw;
+  padding-top: 100px;
+}
