@@ -21,7 +21,7 @@ nav{
     ul{
         @include flex;
         gap: 20px;
-        @include animacionPdt(all, 0.5s, funcion);
+        @include transicionPdt(all, 0.5s, funcion);
         li{
             a{
                 font-size: $fontSize1;
@@ -52,7 +52,7 @@ nav{
             border-radius: 50px;
             background-color: $color1;
             transition: all 0.3s;
-            @include animacionPdt(all, 800ms, funcion);
+            @include transicionPdt(all, 800ms, funcion);
         }
     }
 }
@@ -68,6 +68,18 @@ nav{
             background-color: $color3;
         }
     }
+}
+
+iframe{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+    transform: scale(0.2);
+    border-radius: 35px;
+    box-shadow: 4px 4px 80px #0000003d;
+    opacity: 0;
+    @include transicionPdt(all, 0.2s, ease);
 }
 
 @import '../../../modulos/media'; //Se importan aquí los estilos para media queries, con el fin de que se reemplacen los valores anteriores. Esto se debe a efectos de lectura en cascada de css.

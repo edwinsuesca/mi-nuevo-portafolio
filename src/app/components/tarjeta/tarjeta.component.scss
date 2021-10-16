@@ -16,7 +16,7 @@
         img{
             width: 100%;
             border-radius: 15px;
-            @include animacionPdt(all, 300ms, funcion);
+            @include transicionPdt(all, 300ms, funcion);
         }
         h2{
             position: absolute;
@@ -33,7 +33,7 @@
             text-shadow: 0 0 3px #0000004a;
             @include flex;
             border-radius: 0 0 15px 15px;
-            @include animacionPdt(transform, 300ms, funcion);
+            @include transicionPdt(transform, 300ms, funcion);
             text-align: center;
         }
     }

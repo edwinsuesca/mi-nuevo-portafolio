@@ -9,7 +9,8 @@ export class NavComponent implements AfterViewInit{
 
   rutas=[
     {nombre: 'Inicio', routerLink: '/inicio', clase: 'aNav'},
-    {nombre: 'Proyectos', routerLink: '/proyectos', clase: 'aNav'}
+    {nombre: 'Proyectos', routerLink: '/proyectos', clase: 'aNav'},
+    {nombre: 'Login', routerLink: '/login', clase: 'aNav'}
   ]
 
   constructor() {}
@@ -21,8 +22,10 @@ export class NavComponent implements AfterViewInit{
   @ViewChild('rect1') public rect1!:ElementRef;
   @ViewChild('rect2') public rect2!:ElementRef;
   @ViewChild('rect3') public rect3!:ElementRef;
+  @ViewChild('prev') public prev!:ElementRef;
 
   estadoMenu = false; //Establece el estado del menú en falso (oculto).
+  objetivo = 0;
 
   ngAfterViewInit(): void{
 //Oculta el menú cuando se da clic en una de las opciones con clase "aNav".
@@ -53,7 +56,21 @@ export class NavComponent implements AfterViewInit{
       this.rect1.nativeElement.style.transform = "translateY(0) rotate(0)";
       this.rect3.nativeElement.style.transform = "translateY(0) rotate(0)";
       this.rect2.nativeElement.style.width = "100%";
-      this.estadoMenu = false
+      this.estadoMenu = false;
+    }
+  }
+
+  previsual(event:any):void{
+    console.log(event);
+    //this.objetivo = event.target
+    if(event.type == 'mouseover'){
+      this.prev.nativeElement.style.opacity = "1";
+
+    }
+
+    if(event.type != 'mouseover'){
+      console.log(event);
+      this.prev.nativeElement.style.opacity = "0";
     }
   }
 }

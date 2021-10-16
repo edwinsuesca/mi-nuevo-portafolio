@@ -6,8 +6,13 @@
   </div>
 
   <ul #menu id="listaUl">
-    <li *ngFor="let opcion of rutas">
-      <a class="{{opcion.clase}}" routerLink="{{ opcion.routerLink }}">{{ opcion.nombre }}</a>
+    <li *ngFor="let opcion of rutas" (mouseover)="previsual($event)" (mouseleave)="previsual($event)">
+      <a class="{{opcion.clase}}" routerLink="{{ opcion.routerLink }}">
+        {{ opcion.nombre }}
+      </a>
+      <p>
+        párrafo
+      </p>
     </li>
   </ul>
 
