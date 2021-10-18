@@ -1,5 +1,6 @@
 
 /************Estilos globales de botones**************/
+
 .botonSolido{
     background-color: $color1;
     color: $colorGray2;
@@ -10,8 +11,41 @@
     display: grid;
     place-items: center;
     cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.1s ease-in-out;
+}
+
+.botonBorde{
+    background-color: $colorGray2;
+    color: $color1;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 50px;
+    min-width: 100px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    border: 1px solid $color1;
 }
 
 .botonSolido:hover{
-    background-color: $color3;
+    background-color: $color1Hover;
+}
+
+.cajaFlexAj{
+    @include flexAj(center, space-evenly);
+}
+
+.cajaFlex{
+    @include flex;
+}
+
+.cajaFlexAjC{
+    @include flexAj(center, space-evenly);
+    flex-direction: column;
+}
+
+.cajaFlexC{
+    @include flex;
+    flex-direction: column;
 }

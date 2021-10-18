@@ -25,6 +25,8 @@ li{ list-style: none !important;}
 a{text-decoration: none !important;}
 
 .cajaComponente{
+  @include flex;
+  flex-direction: column;
   padding: 4vw;
   padding-top: 100px;
 }

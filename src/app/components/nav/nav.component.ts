@@ -33,8 +33,8 @@ export class NavComponent implements AfterViewInit{
       switch(this.estadoMenu){
         case false:
           this.menu.nativeElement.style.left = "0"; //Muestra el menú.
-          this.rect1.nativeElement.style.transform = "translateY(11px) rotate(-45deg)"; //Rota rectángulo sup.
-          this.rect3.nativeElement.style.transform = "translateY(-11px) rotate(45deg)"; //Rota rectángulo inf.
+          this.rect1.nativeElement.style.transform = "translateY(10.8px) rotate(-45deg)"; //Rota rectángulo sup.
+          this.rect3.nativeElement.style.transform = "translateY(-10.8px) rotate(45deg)"; //Rota rectángulo inf.
           this.rect2.nativeElement.style.width = "0"; // Oculta rectángulo del medio.
           this.estadoMenu = true;
         break;
@@ -60,7 +60,7 @@ export class NavComponent implements AfterViewInit{
     }
   }
 
-  previsual(event:any):void{
+  /*previsual(event:any):void{
     console.log(event);
     //this.objetivo = event.target
     if(event.type == 'mouseover'){
@@ -72,5 +72,5 @@ export class NavComponent implements AfterViewInit{
       console.log(event);
       this.prev.nativeElement.style.opacity = "0";
     }
-  }
+  }*/
 }

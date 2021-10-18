@@ -1,26 +1,94 @@
 @mixin flex() {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @mixin flexAj($a, $j) {
-    display: flex;
-    align-items: $a;
-    justify-content: $j;
+  display: flex;
+  align-items: $a;
+  justify-content: $j;
 }
 
-@mixin grid($min){
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax($min, 1fr));
+@mixin grid($min) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min, 1fr));
 }
 
 @mixin transicionPdt($propiedad, $duracion, $tiempo) {
-    transition: $propiedad $duracion;
-    @if($tiempo == 'ease'){
-        transition-timing-function:ease;
+  transition: $propiedad $duracion;
+  @if ($tiempo == "ease") {
+    transition-timing-function: ease;
+  } @else {
+    transition-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+  }
+}
+//***********Mixin par dar estilos a los formularios*****************
+@mixin forms($mode) {
+  @if $mode == "dark" {
+    input,
+    select,
+    textarea {
+      background-color: $colorGray1;
+      color: $color1;
     }
-    @else{
-        transition-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rebeccapurple;
+      font-size: 1rem;
     }
+  }
+
+  @if $mode == "light" {
+    input,
+    select,
+    textarea {
+      background-color: $colorGray3;
+      color: $colorGray5;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: $colorGray4;
+      font-size: 1rem;
+    }
+  }
+
+  input,
+  select,
+  textarea {
+    border-radius: 50px;
+    border: none;
+    padding: 8px 15px;
+    font-size: 1rem;
+    width: 100%;
+  }
+
+  textarea {
+    border-radius: 20px;
+    padding: 10px;
+  }
+
+  option,
+  select {
+    border: none;
+    padding: 8px 10px;
+    font-size: 1rem;
+    margin: 10px;
+    width: 100%;
+    font-family: planet, montserrat, sans-serif;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+  }
+}
+
+@mixin caja {
+    border-radius: 20px;
+    padding: 20px;
+    gap: 17px;
 }
