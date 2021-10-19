@@ -1,6 +1,7 @@
 @import "../../../modulos/mixin";
 @import "../../../modulos/colors";
 @import "../../../modulos/elementos";
+
 .cajaComponente{
     min-height: 100vh;
 }
@@ -27,6 +28,7 @@ form{
     max-width: 500px;
     background-color: $colorGray2;
     @include caja;
+    padding-top: 40px;
 
     .cajaInput{
         position: relative;
@@ -67,6 +69,7 @@ form{
     .cajaInput:hover{
         i{
             animation: icons 1.2s ease-out;
+            animation-fill-mode: forwards;
         }
 
         input::placeholder{
@@ -82,17 +85,15 @@ form{
 
             30%{
                 transform: rotateZ(-20deg);
-                color: $color1;
             }
 
             60%{
                 transform: rotateZ(10deg);
-                color: $color1;
             }
 
             100%{
                 transform: rotateZ(0deg);
-                color: $colorGray3;
+                color: $color1;
             }
         }
     }

@@ -29,7 +29,7 @@
 
         <div class="cajaInput">
             <i class="fas fa-envelope"></i>
-            <input type="email" formControlName="correo" placeholder="Correo Electrónico">
+            <input [ngClass]=validarCorreoCampo type="email" formControlName="correo" placeholder="Correo Electrónico">
             <div class="avisos" *ngIf="correoCampo.errors && correoCampo.touched">
                 <small *ngIf="correoCampo.hasError('required')">Campo requerido</small>
                 <small *ngIf="correoCampo.hasError('email')">Dirección de correo no válida</small>
@@ -38,7 +38,7 @@
 
         <div class="cajaInput">
             <i class="fas fa-key"></i>
-            <input type="password" formControlName="password" placeholder="Cree una contraseña">
+            <input [ngClass]=validarPassCampo type="password" formControlName="password" placeholder="Cree una contraseña">
             <div class="avisos" *ngIf="passCampo.errors && passCampo.touched">
                 <small *ngIf="passCampo.hasError('required')">Campo requerido</small>
                 <small *ngIf="passCampo.hasError('minlength')">Mínimo 6 caracteres</small>
@@ -47,10 +47,9 @@
 
         <div class="cajaInput">
             <i class="fas fa-key"></i>
-            <input type="password" formControlName="repeatPass" placeholder="Repita su contraseña">
-            <div class="avisos" *ngIf="repPassCampo.errors && repPassCampo.touched">
-                <small *ngIf="repPassCampo.hasError('required')">Campo requerido</small>
-                <small *ngIf="repPassCampo.hasError('minlength')">Mínimo 6 caracteres</small>
+            <input [class]="validarRepassCampo" type="password" formControlName="repeatPass" placeholder="Repita su contraseña">
+            <div class="avisos">
+                <small *ngIf="matchPass == false" >Contraseñas ingresadas no coinciden</small>
             </div>
         </div>
 
@@ -59,7 +58,7 @@
 
         <div class="cajaFlexAj">
             <!--button class="botonBorde" [disabled]="loginForm.invalid">Botón 2</-button-->
-            <button class="botonSolido" type="submit">Enviar</button>
+            <button [class]="botonDinamico" type="submit">Enviar</button>
         </div>
     </form>
 </div>

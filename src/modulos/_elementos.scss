@@ -1,9 +1,7 @@
 
 /************Estilos globales de botones**************/
 
-.botonSolido{
-    background-color: $color1;
-    color: $colorGray2;
+.boton{
     font-weight: 600;
     padding: 5px 10px;
     border-radius: 50px;
@@ -15,17 +13,20 @@
     transition: all 0.1s ease-in-out;
 }
 
+.botonSolido{
+    background-color: $colorValido;
+    color: $colorGray2;
+}
+
 .botonBorde{
     background-color: $colorGray2;
     color: $color1;
-    font-weight: 600;
-    padding: 5px 10px;
-    border-radius: 50px;
-    min-width: 100px;
-    display: grid;
-    place-items: center;
-    cursor: pointer;
     border: 1px solid $color1;
+}
+
+.botonDeshabilitado{
+    background-color: $colorGray3;
+    color: $colorGray2;
 }
 
 .botonSolido:hover{
@@ -48,4 +49,14 @@
 .cajaFlexC{
     @include flex;
     flex-direction: column;
+}
+
+.inputInvalid {
+    border: solid 1px $color3 !important;
+    box-shadow: 0 0 8px #ff918f44 !important;
+}
+
+.inputValid {
+    border: solid 1px $colorValido !important;
+    box-shadow: 0 0 8px #6afe7e44 !important;
 }

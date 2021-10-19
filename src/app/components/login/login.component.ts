@@ -1,17 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators, FormControlName } from '@angular/forms';
-import {debounceTime} from 'rxjs/operators';
+import { FormControl, FormGroup, FormBuilder, Validators, FormControlName, AbstractControl } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
+//import {myValidations} from '../../utils/validations';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
 
   formLogin: FormGroup;
-
-  constructor(private formBuilder:FormBuilder) {
+  botonDinamico = "boton botonDeshabilitado";
+  matchPass = null;
+  constructor(private formBuilder: FormBuilder) {
     this.construirFormulario();
   }
 
@@ -19,14 +22,14 @@ export class LoginComponent implements OnInit {
   }
 
   private construirFormulario() {
-    
-  this.formLogin = this.formBuilder.group({
+
+    this.formLogin = this.formBuilder.group({
       nombres: ['', [Validators.required, Validators.maxLength(45)]],
       apellidos: ['', [Validators.required, Validators.maxLength(45)]],
       correo: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       repeatPass: ['', [Validators.required, Validators.minLength(6)]]
-  })
+    })
 
     // this.formLogin = new FormGroup({
     //   nombres: new FormControl('', [Validators.required]),
@@ -36,44 +39,101 @@ export class LoginComponent implements OnInit {
     //   repeatPass: new FormControl('', [Validators.required, Validators.minLength(6)])
     // })
 
-    // this.formLogin.valueChanges
-    // .pipe(debounceTime(500))
-    // .subscribe(value => {
-    //   console.log(value);
-    // });
+    this.formLogin.valueChanges.pipe(debounceTime(500)).subscribe(value => {
+      if (this.formLogin.valid) {
+        //console.log(value);
+        //console.log(this.formLogin.controls['nombres'].value);
+        //this.formLogin.reset();
+        let pass1 = this.formLogin.controls['password'].value;
+        let pass2 = this.formLogin.controls['repeatPass'].value;
+        if(pass1 == pass2){
+          this.matchPass = true;
+          this.botonDinamico = "boton botonSolido";
+        }
+
+        else{
+          this.matchPass = false;
+          this.botonDinamico = "boton botonDeshabilitado";
+        }
+      }
+      else {
+        this.botonDinamico = "boton botonDeshabilitado";
+      }
+    });
   }
 
-  enviar(event: Event){
+  enviar(event: Event) {
     event.preventDefault();
     const value = this.formLogin.value;
-    if(this.formLogin.valid){
+
+    if (this.formLogin.valid && this.matchPass == true) {
+      this.botonDinamico = "boton botonSolido";
       console.log(value);
-      // const name = this.formLogin.get('name');
-      // console.log(name.value);
+      console.log(this.formLogin.controls['nombres'].value);
+      this.formLogin.reset();
     }
-    else{
-      console.log("funciona");
+    else {
+      this.botonDinamico = "boton botonDeshabilitado";
       this.formLogin.markAllAsTouched;
     }
   }
 
-  get nombresCampo(){
+//**********Validando repetir contraseña***************/
+  get nombresCampo() {
     return this.formLogin.get('nombres');
   }
-
-  get apellidosCampo(){
+//**********Validando repetir contraseña***************/
+  get apellidosCampo() {
     return this.formLogin.get('apellidos');
   }
-
-  get correoCampo(){
+//**********Validando repetir contraseña***************/
+  get correoCampo() {
     return this.formLogin.get('correo');
   }
 
-  get passCampo(){
+  get validarCorreoCampo() {
+    if(this.correoCampo.touched){
+      if(this.correoCampo.valid){
+        return "inputValid";
+      }
+      else{
+        return "inputInvalid";
+      }
+    }
+    return "";
+  }
+
+//**********Validando repetir contraseña***************/
+  get passCampo() {
     return this.formLogin.get('password');
   }
 
-  get repPassCampo(){
+  get validarPassCampo() {
+    if(this.passCampo.touched){
+      if(this.passCampo.valid){
+        return "inputValid";
+      }
+      else{
+        return "inputInvalid";
+      }
+    }
+    return "";
+  }
+
+//**********Validando repetir contraseña***************/
+  get repPassCampo() {
     return this.formLogin.get('repeatPass');
+  }
+
+  get validarRepassCampo() {
+    if(this.repPassCampo.dirty){
+      if(this.repPassCampo.valid && this.matchPass == true){
+        return "inputValid";
+      }
+      else{
+        return "inputInvalid";
+      }
+    }
+    return "";
   }
 }
