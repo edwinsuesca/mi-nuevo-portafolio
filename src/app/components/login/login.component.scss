@@ -72,9 +72,9 @@ form{
             animation-fill-mode: forwards;
         }
 
-        input::placeholder{
-            color: $colorGray2;
-            transition: color .2s ease-out;
+        input{
+            border: solid 1px #fed16a44;
+            box-shadow: 0 0 8px #fed16a44;
         }
 
         @keyframes icons {

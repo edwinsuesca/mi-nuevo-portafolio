@@ -50,7 +50,8 @@
             <i class="fas fa-key"></i>
             <input [class]="validarRepassCampo" type="password" formControlName="repeatPass" placeholder="Repita su contraseña">
             <div class="avisos">
-                <small *ngIf="matchPass == false" >Contraseñas ingresadas no coinciden</small>
+                <small *ngIf="matchPass == false && repPassCampo.touched">Contraseñas ingresadas no coinciden</small>
+                <small *ngIf="repPassCampo.hasError('maxlength')" >La confirmación de contraseña es más larga</small>
             </div>
         </div>
 
