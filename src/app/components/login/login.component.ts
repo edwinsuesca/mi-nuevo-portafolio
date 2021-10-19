@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     this.formLogin = this.formBuilder.group({
       nombres: ['', [Validators.required, Validators.maxLength(45)]],
       apellidos: ['', [Validators.required, Validators.maxLength(45)]],
-      correo: ['', [Validators.required, Validators.email]],
+      correo: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       repeatPass: ['', [Validators.required, Validators.minLength(6)]]
     })
@@ -82,9 +82,34 @@ export class LoginComponent implements OnInit {
   get nombresCampo() {
     return this.formLogin.get('nombres');
   }
+
+  validarNombres() {
+    if(this.nombresCampo.touched){
+      if (this.nombresCampo.valid) {
+        return "inputValid";
+      }
+      else {
+        return "inputInvalid";
+      }
+    }
+    return null;
+  }
+
 //**********Validando repetir contraseña***************/
   get apellidosCampo() {
     return this.formLogin.get('apellidos');
+  }
+
+  validarApellidos() {
+    if(this.apellidosCampo.touched){
+      if (this.apellidosCampo.valid) {
+        return "inputValid";
+      }
+      else {
+        return "inputInvalid";
+      }
+    }
+    return null;
   }
 //**********Validando repetir contraseña***************/
   get correoCampo() {

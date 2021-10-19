@@ -11,7 +11,8 @@
 
         <div class="cajaInput">
             <i class="fas fa-address-card"></i>
-            <input type="text" formControlName="nombres" placeholder="Nombres">
+            <input class={{validarNombres()}} type="text" formControlName="nombres" placeholder="Nombres">
+            
             <div class="avisos" *ngIf="nombresCampo.errors && nombresCampo.touched">
                 <small *ngIf="nombresCampo.hasError('required')">Campo requerido</small>
                 <small *ngIf="nombresCampo.hasError('maxlength')">Máximo 45 caracteres</small>
@@ -20,7 +21,7 @@
 
         <div class="cajaInput">
             <i class="fas fa-address-card"></i>
-            <input type="text" formControlName="apellidos" placeholder="Apellidos">
+            <input class="{{validarApellidos()}}" type="text" formControlName="apellidos" placeholder="Apellidos">
             <div class="avisos" *ngIf="apellidosCampo.errors && apellidosCampo.touched">
                 <small *ngIf="apellidosCampo.hasError('required')">Campo requerido</small>
                 <small *ngIf="apellidosCampo.hasError('maxlength')">Máximo 45 caracteres</small>
@@ -32,7 +33,7 @@
             <input [ngClass]=validarCorreoCampo type="email" formControlName="correo" placeholder="Correo Electrónico">
             <div class="avisos" *ngIf="correoCampo.errors && correoCampo.touched">
                 <small *ngIf="correoCampo.hasError('required')">Campo requerido</small>
-                <small *ngIf="correoCampo.hasError('email')">Dirección de correo no válida</small>
+                <small *ngIf="correoCampo.hasError('pattern')">Dirección de correo no válida</small>
             </div>
         </div>
 
